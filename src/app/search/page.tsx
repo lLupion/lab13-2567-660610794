@@ -9,16 +9,19 @@ export default function SearchPage() {
   //A hook that helps navigating each route programmatically
   const router = useRouter();
 
-  const searchInputOnChange = (event) => {
+  const searchInputOnChange = (event:any) => {
     setSearchInput(event.target.value);
   };
 
-  const searchInputOnKeyUp = (event) => {
+  const searchInputOnKeyUp = (event:any) => {
     if (event.key === "Enter") searchBtnOnClick();
   };
 
   const searchBtnOnClick = () => {
-    router.push("/search/" + searchInput);
+    if(searchInput === ""){
+      return;
+    }
+    router.push("/search/" + (searchInput));
   };
 
   return (
